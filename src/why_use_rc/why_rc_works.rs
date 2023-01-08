@@ -77,13 +77,24 @@ mod tests {
   }
 }
 
-// error[E0382]: use of moved value: `node`
-//   --> src/why_use_rc_refcell/why_Rc_not_works.rs:34:35
-//    |
-// 30 |   pub fn append(&mut self, node: Node<T>) {
-//    |                            ---- move occurs because `node` has type `Node<T>`, which does not implement the `Copy` trait
-// ...
-// 33 |         old_head.next = Some(Rc::new(node));
-//    |                                       ---- value moved here
-// 34 |         self.tail = Some(Rc::new(node));
-//    |                                   ^^^^ value used here after move
+// Finished test [unoptimized + debuginfo] target(s) in 0.01s
+// Running unittests src\lib.rs (target\debug\deps\why_use_rc_refcell_for_linkedlist-787cc8ba0a0d610b.exe)
+
+// running 3 tests
+// test why_use_rc::why_rc_works::tests::test_ll_new_empty ... ok
+// test why_use_rc::why_rc_works::tests::test_ll_new_with_node ... ok
+// test why_use_rc::why_rc_works::tests::test_ll_append ... FAILED
+
+// failures:
+
+// ---- why_use_rc::why_rc_works::tests::test_ll_append stdout ----
+// thread 'why_use_rc::why_rc_works::tests::test_ll_append' panicked at 'called `Option::unwrap()` on a `None` value', src\why_use_rc\why_rc_works.rs:76:47 
+// note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+// failures:
+// why_use_rc::why_rc_works::tests::test_ll_append
+
+// test result: FAILED. 2 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+// error: test failed, to rerun pass `--lib`
